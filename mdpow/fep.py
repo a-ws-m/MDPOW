@@ -770,6 +770,8 @@ class Gsolv(Journalled):
         foreign_lambdas = np.asarray(foreign_lambdas)
         lambda_index = np.where(foreign_lambdas == lmbda)[0][0]
 
+        lambda_param_name = "vdw-lambdas" if component == "vdw" else "coul-lambdas"
+
         kwargs.update(
             dirname=wdir,
             struct=self.struct,
@@ -784,9 +786,9 @@ class Gsolv(Journalled):
             free_energy="yes",
             couple_moltype=self.molecule,
             init_lambda_state=lambda_index,
-            fep_lambdas=foreign_lambdas,
             calc_lambda_neighbors=-1,
         )
+        kwargs[lambda_param_name] = foreign_lambdas
 
         return gromacs.setup.MD(**kwargs)
 

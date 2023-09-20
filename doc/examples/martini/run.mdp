@@ -73,7 +73,8 @@ init-lambda-state        = 0.0
 
 ; What are the values of lambda at the intermediate states?
 ;------- 
-fep_lambdas		 = 0
+coul-lambdas =
+vdw-lambdas = 
 
 ; This makes sure we print out the differences in Hamiltonians between all states, and not just the neighboring states
 ;--------
